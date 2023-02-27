@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import ProductCategory, Product, Basket
 from users.models import User
+
 # Create your views here.
 
 
@@ -18,15 +19,6 @@ class IndexView(TemplateView):
         return context
 
 
-# def products_view(request):
-#     context = {
-#         'title': 'Catalog',
-#         'products': Product.objects.all(),
-#         'products_category': ProductCategory.objects.all()
-#     }
-#     return render(request, 'products/products.html', context)
-
-
 class ProductsView(ListView):
     template_name = 'products/products.html'
     title = 'Catalog'
@@ -36,6 +28,16 @@ class ProductsView(ListView):
         context = super(ProductsView, self).get_context_data(**kwargs)
         context['products_category'] = ProductCategory.objects.all()
         return context
+
+
+def products(request, category_id=None):
+
+    context = {
+        'title': 'Store - каталог',
+        'products_category': ProductCategory.objects.all(),
+        'product_list': Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
+    }
+    return render(request, 'products/products.html', context)
 
 
 @login_required

@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 from .models import ProductCategory, Product, Basket
 from users.models import User
@@ -30,12 +31,15 @@ class ProductsView(ListView):
         return context
 
 
-def products(request, category_id=None):
-
+def products(request, category_id=None, page_number=1):
+    product = Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
+    per_page = 3
+    paginator = Paginator(product, per_page)
+    products_paginator = paginator.page(page_number)
     context = {
         'title': 'Store - каталог',
         'products_category': ProductCategory.objects.all(),
-        'product_list': Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
+        'product_list': products_paginator,
     }
     return render(request, 'products/products.html', context)
 

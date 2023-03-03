@@ -13,10 +13,8 @@ class IndexView(TemplateView):
     template_name = 'products/index.html'
 
     def get_context_data(self, **kwargs):
-        context = {
-            'title': 'django Store',
-            'is_promotion': False,
-        }
+        context = super(IndexView, self).get_context_data()
+        context['title'] = 'django Store'
         return context
 
 

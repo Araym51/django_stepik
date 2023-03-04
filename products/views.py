@@ -1,10 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import login_required
-# from django.core.paginator import Paginator
 
 from .models import ProductCategory, Product, Basket
-from users.models import User
 
 # Create your views here.
 

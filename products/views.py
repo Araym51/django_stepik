@@ -1,9 +1,10 @@
-from django.shortcuts import render, HttpResponseRedirect
-from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import HttpResponseRedirect, render
+from django.views.generic import ListView, TemplateView
 
-from .models import ProductCategory, Product, Basket
 from common.views import TitleMixin
+
+from .models import Basket, Product, ProductCategory
 
 # Create your views here.
 

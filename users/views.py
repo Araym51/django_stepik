@@ -5,7 +5,6 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import HttpResponseRedirect
 
-from products.models import Basket
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm, EmailVerification
 from users.models import User
 from common.views import TitleMixin

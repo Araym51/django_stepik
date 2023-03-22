@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 from django.shortcuts import HttpResponseRedirect, render
 from django.views.generic import ListView, TemplateView
-from django.core.cache import cache
 
 from common.views import TitleMixin
 

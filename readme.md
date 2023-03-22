@@ -8,3 +8,8 @@
 ```
 redis-server
 ```
+
+Окно 2 (celery):
+```
+celery -A django_stepik worker -l INFO
+```

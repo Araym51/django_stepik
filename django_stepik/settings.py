@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'debug_toolbar',  # debug_toolbar
+    'django.contrib.humanize',
     # OAuth:
     'allauth',
     'allauth.account',
